@@ -1,13 +1,14 @@
 package com.JuniorDevTestTask.model;
 
 import com.JuniorDevTestTask.model.utils.BaseItem;
-import org.springframework.stereotype.Component;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-@Component
 @Entity
-@Table(name = "PRODUCT_ITEM")
+@Table(name = "product_item")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING, name = "Item_Type")
 public class Item extends BaseItem {
+
+
 }

@@ -1,13 +1,12 @@
-INSERT INTO product_item(sku, name, price, size, weight, dimensions
+
+INSERT INTO product_item(name, price, type, property
 )
 VALUES(
-"CC0001", "ACER DVD", 55, "700mb", null, null
+"ACER DVD", 55, "DVD", "700"
 ),
 (
-"BA0001", "LOTR", 12, null, "1,2kg", null
+"LOTR", 12,"BOOK", "1,2"
 ),
 (
-"FO", "Chair BOSS", 65, null, null, "55x12x64"
+"Chair Boss", 65, "FURNITURE", "55x12x64"
 );
-
-

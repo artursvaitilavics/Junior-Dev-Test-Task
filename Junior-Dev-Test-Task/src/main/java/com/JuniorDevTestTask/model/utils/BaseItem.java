@@ -1,12 +1,10 @@
 package com.JuniorDevTestTask.model.utils;
 
-import com.JuniorDevTestTask.model.utils.ItemType;
-
 import javax.persistence.*;
+
 
 @MappedSuperclass
 public class BaseItem {
-
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,12 +23,19 @@ public class BaseItem {
     @Column(name = "type")
     private ItemType type;
 
-    public Long getId() {
-        return id;
+    @Column(name = "property")
+    private String property;
+
+    public String getProperty() {
+        return property;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setProperty(String property) {
+        this.property = property;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
@@ -55,5 +60,13 @@ public class BaseItem {
 
     public void setPrice(Long price) {
         this.price = price;
+    }
+
+    public ItemType getType() {
+        return type;
+    }
+
+    public void setType(ItemType type) {
+        this.type = type;
     }
 }
