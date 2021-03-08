@@ -1,29 +1,20 @@
-package com.JuniorDevTestTask.model.utils;
+package com.JuniorDevTestTask.dto;
 
-import com.JuniorDevTestTask.model.utils.ItemType;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.persistence.*;
+public class BaseDto {
 
-@MappedSuperclass
-public class BaseItem {
-
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty
     private Long id;
 
-    @Column(name = "sku")
+    @JsonProperty
     private String sku;
 
-    @Column(name = "name")
+    @JsonProperty
     private String name;
 
-    @Column(name = "price")
+    @JsonProperty
     private Long price;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type")
-    private ItemType type;
 
     public Long getId() {
         return id;
@@ -33,16 +24,16 @@ public class BaseItem {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public String getSku() {
         return sku;
     }
 
     public void setSku(String sku) {
         this.sku = sku;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
