@@ -22,6 +22,11 @@ public class BaseItem {
     @Column(name = "property")
     private String property;
 
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getProperty() {
         return property;
     }

@@ -25,7 +25,7 @@ public class ItemService {
         if (itemValidator.isValid(item)) {
             return itemRepository.save(item);
         } else {
-            return null;
+            return item;
         }
 
     }
