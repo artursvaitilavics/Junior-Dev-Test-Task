@@ -2,6 +2,9 @@ package com.JuniorDevTestTask.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+
 public class ItemDto {
 
     @JsonProperty
@@ -10,12 +13,16 @@ public class ItemDto {
     @JsonProperty
     private String sku;
 
+    @NotEmpty(message = "Please enter product name...")
+    @NotBlank(message = "Please fill product name...")
     @JsonProperty
     private String name;
 
+    @NotEmpty(message = "Please enter product price...")
     @JsonProperty
     private Long price;
 
+    @NotEmpty(message = "Please enter product property...")
     @JsonProperty
     private String property;
 

@@ -14,6 +14,7 @@ import com.JuniorDevTestTask.service.FurnitureService;
 import com.JuniorDevTestTask.service.ItemService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -52,19 +53,19 @@ public class ItemController {
     }
 
     @PostMapping("/dvd")
-    public ItemDto saveDvd(@RequestBody ItemDto itemDto) {
+    public ItemDto saveDvd(@Valid @RequestBody ItemDto itemDto) {
         Dvd item = dvdService.save(dvdMapper.fromDto(itemDto));
         return dvdMapper.toDto(item);
     }
 
     @PostMapping("/book")
-    public ItemDto saveBook(@RequestBody ItemDto itemDto) {
+    public ItemDto saveBook(@Valid @RequestBody ItemDto itemDto) {
         Book book = bookService.save(bookMapper.fromDto(itemDto));
         return bookMapper.toDto(book);
     }
 
     @PostMapping("/furniture")
-    public ItemDto saveFurniture(@RequestBody ItemDto itemDto) {
+    public ItemDto saveFurniture(@Valid @RequestBody ItemDto itemDto) {
         Furniture furniture = furnitureService.save(furnitureMapper.fromDto(itemDto));
         return furnitureMapper.toDto(furniture);
     }
