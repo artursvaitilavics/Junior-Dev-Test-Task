@@ -1,8 +1,8 @@
 package com.JuniorDevTestTask.service;
 
 import com.JuniorDevTestTask.model.Book;
+import com.JuniorDevTestTask.model.utils.ItemStatus;
 import com.JuniorDevTestTask.repository.ItemRepository;
-import com.JuniorDevTestTask.validator.BookValidator;
 import com.JuniorDevTestTask.validator.ItemValid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,6 +23,7 @@ public class BookService {
         if (itemValidator.isValid(book)) {
             String property = "Weight: " + book.getProperty() + " KG";
             book.setProperty(property);
+            book.setStatus(ItemStatus.ACTIVE);
             Book savedBook = repository.save(book);
             savedBook.setSku("BK" + savedBook.getId());
             return repository.save(savedBook);

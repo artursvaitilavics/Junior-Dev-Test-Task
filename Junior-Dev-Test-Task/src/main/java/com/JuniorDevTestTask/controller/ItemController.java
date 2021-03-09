@@ -23,9 +23,9 @@ import java.util.stream.Collectors;
 @CrossOrigin("*")
 public class ItemController {
 
-    private final ItemService service;
+    private final ItemService itemService;
     private final DvdService dvdService;
-    private final ItemMapper mapper;
+    private final ItemMapper itemMapper;
     private final DvdMapper dvdMapper;
     private final BookService bookService;
     private final BookMapper bookMapper;
@@ -34,17 +34,17 @@ public class ItemController {
 
 
     public ItemController(
-            ItemService service,
+            ItemService itemService,
             DvdService dvdService,
-            ItemMapper mapper,
+            ItemMapper itemMapper,
             DvdMapper dvdMapper,
             BookService bookService,
             BookMapper bookMapper,
             FurnitureMapper furnitureMapper,
             FurnitureService furnitureService) {
-        this.service = service;
+        this.itemService = itemService;
         this.dvdService = dvdService;
-        this.mapper = mapper;
+        this.itemMapper = itemMapper;
         this.dvdMapper = dvdMapper;
         this.bookService = bookService;
         this.bookMapper = bookMapper;
@@ -70,10 +70,23 @@ public class ItemController {
         return furnitureMapper.toDto(furniture);
     }
 
+    @DeleteMapping("/items")
+    public void deleteItems(@RequestBody List<ItemDto> itemDtos) throws Exception {
+        itemDtos.forEach(itemDto -> {
+            try {
+                itemService.delete(itemDto.getId());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+//        itemService.delete(itemDto.getId());
+
+    }
+
 
     @GetMapping("/items")
     public List<ItemDto> getAll() {
-        return service.findAll().stream().map(mapper::toDto).collect(Collectors.toList());
+        return itemService.findAll().stream().map(itemMapper::toDto).collect(Collectors.toList());
     }
 
 }

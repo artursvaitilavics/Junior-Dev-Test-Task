@@ -2,6 +2,7 @@ package com.JuniorDevTestTask.service;
 
 
 import com.JuniorDevTestTask.model.Furniture;
+import com.JuniorDevTestTask.model.utils.ItemStatus;
 import com.JuniorDevTestTask.repository.ItemRepository;
 import com.JuniorDevTestTask.validator.ItemValid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ public class FurnitureService {
         if (itemValidator.isValid(furniture)) {
             String property = "Dimensions: " + furniture.getProperty();
             furniture.setProperty(property);
+            furniture.setStatus(ItemStatus.ACTIVE);
             Furniture savedFurniture = repository.save(furniture);
             savedFurniture.setSku("FRN" + savedFurniture.getId());
             return repository.save(savedFurniture);

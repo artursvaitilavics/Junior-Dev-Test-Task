@@ -22,6 +22,17 @@ public class BaseItem {
     @Column(name = "property")
     private String property;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private ItemStatus status;
+
+    public ItemStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ItemStatus status) {
+        this.status = status;
+    }
 
     public void setId(Long id) {
         this.id = id;
