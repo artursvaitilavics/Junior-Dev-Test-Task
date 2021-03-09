@@ -15,9 +15,11 @@ public class DvdService {
         this.repository = repository;
     }
 
-    public Dvd save(Dvd item) {
-        String property = "Size: " + item.getProperty() + " MB";
-        item.setProperty(property);
-        return repository.save(item);
+    public Dvd save(Dvd dvd) {
+        String property = "Size: " + dvd.getProperty() + " MB";
+        dvd.setProperty(property);
+        Dvd savedDvd  = repository.save(dvd);
+        savedDvd.setSku("DVD" + savedDvd.getId());
+        return repository.save(savedDvd);
     }
 }

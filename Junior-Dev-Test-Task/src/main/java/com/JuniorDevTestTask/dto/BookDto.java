@@ -2,13 +2,9 @@ package com.JuniorDevTestTask.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class ItemDto {
-
+public class BookDto {
     @JsonProperty
     private Long id;
-
-    @JsonProperty
-    private String sku;
 
     @JsonProperty
     private String name;
@@ -26,14 +22,6 @@ public class ItemDto {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getSku() {
-        return sku;
-    }
-
-    public void setSku(String sku) {
-        this.sku = sku;
     }
 
     public String getName() {

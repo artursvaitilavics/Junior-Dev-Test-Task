@@ -14,7 +14,6 @@ public class DvdMapper {
         itemDto.setId(dvd.getId());
         itemDto.setSku(dvd.getSku());
         itemDto.setName(dvd.getName());
-//        itemDto.setType(dvd.getType().name());
         itemDto.setPrice(dvd.getPrice());
         itemDto.setProperty(dvd.getProperty());
         return itemDto;
@@ -24,7 +23,6 @@ public class DvdMapper {
         Dvd dvd = new Dvd();
         dvd.setSku(itemDto.getSku());
         dvd.setName(itemDto.getName());
-//        item.setType(ItemType.valueOf(itemDto.getType()));
         dvd.setPrice(itemDto.getPrice());
         dvd.setProperty(itemDto.getProperty());
         return dvd;

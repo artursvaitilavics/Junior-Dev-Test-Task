@@ -15,9 +15,11 @@ public class BookService {
         this.repository = repository;
     }
 
-    public Book saveBook(Book book) {
+    public Book save(Book book) {
         String property = "Weight: " + book.getProperty() + " KG";
         book.setProperty(property);
-        return repository.save(book);
+        Book savedBook = repository.save(book);
+        savedBook.setSku("BK" + savedBook.getId());
+        return repository.save(savedBook);
     }
 }
