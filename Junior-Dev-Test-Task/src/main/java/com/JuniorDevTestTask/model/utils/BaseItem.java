@@ -19,9 +19,9 @@ public class BaseItem {
     @Column(name = "price")
     private Long price;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type")
-    private ItemType type;
+//    @Enumerated(EnumType.STRING)
+//    @Column(name = "type")
+//    private ItemType type;
 
     @Column(name = "property")
     private String property;
@@ -62,11 +62,11 @@ public class BaseItem {
         this.price = price;
     }
 
-    public ItemType getType() {
-        return type;
-    }
-
-    public void setType(ItemType type) {
-        this.type = type;
-    }
+//    public ItemType getType() {
+//        return type;
+//    }
+//
+//    public void setType(ItemType type) {
+//        this.type = type;
+//    }
 }

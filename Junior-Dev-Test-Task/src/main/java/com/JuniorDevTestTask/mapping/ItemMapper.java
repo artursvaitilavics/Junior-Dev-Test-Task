@@ -13,8 +13,9 @@ public class ItemMapper {
         itemDto.setId(item.getId());
         itemDto.setSku(item.getSku());
         itemDto.setName(item.getName());
-        itemDto.setType(item.getType().name());
+//        itemDto.setType(item.getType().name());
         itemDto.setPrice(item.getPrice());
+        itemDto.setProperty(item.getProperty());
         return itemDto;
     }
 
@@ -22,7 +23,7 @@ public class ItemMapper {
         Item item = new Item();
         item.setSku(itemDto.getSku());
         item.setName(itemDto.getName());
-        item.setType(ItemType.valueOf(itemDto.getType()));
+//        item.setType(ItemType.valueOf(itemDto.getType()));
         item.setPrice(itemDto.getPrice());
         return item;
     }

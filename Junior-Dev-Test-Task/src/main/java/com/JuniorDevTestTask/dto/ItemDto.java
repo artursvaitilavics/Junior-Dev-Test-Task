@@ -16,19 +16,19 @@ public class ItemDto {
     @JsonProperty
     private Long price;
 
-    @JsonProperty
-    private String type;
+//    @JsonProperty
+//    private String type;
 
     @JsonProperty
     private String property;
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
+//    public String getType() {
+//        return type;
+//    }
+//
+//    public void setType(String type) {
+//        this.type = type;
+//    }
 
     public Long getId() {
         return id;

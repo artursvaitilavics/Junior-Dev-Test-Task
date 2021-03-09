@@ -14,19 +14,19 @@ public class DvdMapper {
         itemDto.setId(dvd.getId());
         itemDto.setSku(dvd.getSku());
         itemDto.setName(dvd.getName());
-        itemDto.setType(dvd.getType().name());
+//        itemDto.setType(dvd.getType().name());
         itemDto.setPrice(dvd.getPrice());
         itemDto.setProperty(dvd.getProperty());
         return itemDto;
     }
 
     public Dvd fromDto(ItemDto itemDto) {
-        Dvd item = new Dvd();
-        item.setSku(itemDto.getSku());
-        item.setName(itemDto.getName());
-        item.setType(ItemType.valueOf(itemDto.getType()));
-        item.setPrice(itemDto.getPrice());
-        item.setProperty(itemDto.getProperty());
-        return item;
+        Dvd dvd = new Dvd();
+        dvd.setSku(itemDto.getSku());
+        dvd.setName(itemDto.getName());
+//        item.setType(ItemType.valueOf(itemDto.getType()));
+        dvd.setPrice(itemDto.getPrice());
+        dvd.setProperty(itemDto.getProperty());
+        return dvd;
     }
 }
