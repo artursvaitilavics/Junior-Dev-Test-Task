@@ -1,2 +1,13 @@
-package com.ItemsBackEnd.dto;public class SimpleDto {
+package com.ItemsBackEnd.dto;
+
+public class SimpleDto {
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
