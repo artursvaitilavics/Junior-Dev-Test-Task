@@ -46,13 +46,16 @@ export class ItemsComponent implements OnInit {
       this.items = data;
     });
 
-    // this.refreshItems();
+    this.refreshItems();
     this.clearItem();
   }
 
   refreshItems() {
-    this.items = [];
-    this.itemsService.getItems().subscribe((items) => (this.items = items));
+    console.log('Loading items from back-end...');
+    setTimeout(() => {
+      this.itemsService.getItems().subscribe((items) => (this.items = items));
+    }, 1000);
+
     // this.itemsService.getItems();
   }
 
@@ -66,11 +69,14 @@ export class ItemsComponent implements OnInit {
     console.log('deleteItems()');
     const itemsToDelete = this.getSelected(this.items);
 
-    itemsToDelete.forEach((item) => this.itemsService.deleteItems(item.id).subscribe());
+    itemsToDelete.forEach((item) =>
+      this.itemsService.deleteItems(item.id).subscribe()
+    );
 
     console.log(itemsToDelete);
 
     this.refreshItems();
+
     // this.service.deletePost(post.id)
     // .subscribe(response => {
     //   this.posts = this.posts.filter(item => item.id !== post.id);

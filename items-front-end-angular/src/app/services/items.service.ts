@@ -45,9 +45,8 @@ export class ItemsService {
     );
   }
 
-  deleteItems(id: number) : Observable<any> {
+  deleteItems(id: number): Observable<any> {
     return this.http.delete(`${this.URL}items/${id}`);
-
   }
 
   /*  * Handle Http operation that failed.
