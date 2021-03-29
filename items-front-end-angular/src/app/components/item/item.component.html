@@ -1,0 +1,18 @@
+<div
+  class="item-component"
+  (mouseover)="hover = true"
+  (mouseleave)="hover = false"
+  (click)="selectItem()"
+>
+  <div
+    [ngStyle]="{
+      backgroundColor: hover == true ? hoverColor : defaultColor
+    }"
+  >
+      <h3>{{ item.name }}</h3>
+      <p>id: {{ item.id }}</p>
+      <p>price: {{ item.price }}</p>
+      <p>property: {{ item.property }}</p>
+      <p>sku: {{ item.sku }}</p>
+    </div>
+</div>

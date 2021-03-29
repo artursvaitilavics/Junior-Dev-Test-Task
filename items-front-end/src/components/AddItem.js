@@ -4,6 +4,7 @@ const AddItem = ({ onAddItem }) => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [property, setProperty] = useState("");
+  const [type, setType] = useState("");
 
   const addItem = (e) => {
     e.preventDefault();
@@ -13,7 +14,7 @@ const AddItem = ({ onAddItem }) => {
       return;
     }
 
-    onAddItem({ name, price, property });
+    onAddItem({type, name, price, property });
 
     setName("");
     setPrice("");
@@ -23,6 +24,13 @@ const AddItem = ({ onAddItem }) => {
   return (
     <div className="add-item-form">
       <form onSubmit={addItem}>
+        
+        <input
+          type="text"
+          placeholder="DVD"
+          value={type}
+          onChange={(e) => setType(e.target.value)}
+        />
         <input
           type="text"
           placeholder="Name"

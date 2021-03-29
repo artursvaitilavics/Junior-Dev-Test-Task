@@ -30,7 +30,12 @@ public class ItemService {
         } else {
             return item;
         }
+    }
 
+    public Item update(Item item, Long id) throws Exception {
+        itemRepository.findById(id).orElseThrow(() -> new Exception("Item with " + id + " id do not exist..."));
+        item.setId(id);
+        return  itemRepository.save(item);
     }
 
     public void delete(Long id) throws Exception {
@@ -39,6 +44,11 @@ public class ItemService {
                 .orElseThrow(() -> new Exception("item with " + id + "id do not exist"));
         item.setStatus(ItemStatus.DELETED);
         itemRepository.save(item);
+        System.out.println("DELETE FROM SERVICES");
+    }
+
+    public Item findById(Long id) throws Exception {
+        return itemRepository.findById(id).orElseThrow(() -> new Exception("item with " + id + "id do not exist"));
     }
 
     public List<Item> findAll() {

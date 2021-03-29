@@ -1,0 +1,19 @@
+<div>
+  <div>
+    <input [(ngModel)]="item.name" />
+  </div>
+  <div>
+    <input [(ngModel)]="item.price" />
+  </div>
+  <div>
+    <input [(ngModel)]="item.property" />
+  </div>
+  <div>
+    <button (click)="saveItem()">Save</button>
+  </div>
+</div>
+<div *ngFor="let localItem of items">
+  <app-item [item]="localItem"></app-item>
+</div>
+<button (click)="deleteItems()">Delete Items</button>
+<button (click)="clearSelection(items)">cancel</button>

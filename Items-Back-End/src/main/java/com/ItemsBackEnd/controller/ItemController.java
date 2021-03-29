@@ -15,6 +15,7 @@ import com.ItemsBackEnd.service.ItemService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -70,23 +71,28 @@ public class ItemController {
         return furnitureMapper.toDto(furniture);
     }
 
-    @DeleteMapping("/items")
-    public void deleteItems(@RequestBody List<ItemDto> itemDtos) throws Exception {
-        itemDtos.forEach(itemDto -> {
-            try {
-                itemService.delete(itemDto.getId());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-//        itemService.delete(itemDto.getId());
+    @DeleteMapping("/items/{id}")
+    public void deleteItems(@PathVariable("id") Long id) throws Exception {
+        itemService.delete(id);
 
     }
 
 
+    @GetMapping("/item/id")
+    public ItemDto getById(@PathParam("id") Long id) throws Exception {
+        return itemMapper.toDto(itemService.findById(id));
+    }
+
     @GetMapping("/items")
     public List<ItemDto> getAll() {
         return itemService.findAll().stream().map(itemMapper::toDto).collect(Collectors.toList());
+    }
+
+
+    //    Change bellow to PUT
+    @PostMapping("/item/id")
+    public ItemDto update(@PathParam("id") Long id, @RequestBody ItemDto itemDto) throws Exception {
+        return itemMapper.toDto(itemService.update(itemMapper.fromDto(itemDto), id));
     }
 
 }
