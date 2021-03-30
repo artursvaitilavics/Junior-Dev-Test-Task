@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { ItemEntity } from './item-interface';
+import { ItemsService } from '../../services/items.service';
+import { ItemEdit } from '../item/item-edit';
 
 @Component({
   selector: 'app-item',
@@ -25,15 +27,34 @@ export class ItemComponent implements OnInit {
 
   hover: boolean = false;
   selected: boolean = false;
+  dataVisible: boolean = true;
 
-  hoverColor: string = "#7fffd4";
-  defaultColor: string = "#00ffff";
-  selectedColor: string = "#ff0000";
+  hoverColor: string = '#7fffd4';
+  defaultColor: string = '#00ffff';
+  selectedColor: string = '#ff0000';
 
-
-  constructor() {}
+  constructor(private itemsService: ItemsService) {}
 
   ngOnInit(): void {}
+
+  toggleEdit() {
+    this.dataVisible = !this.dataVisible;
+  }
+
+  edit(event: any) {
+    console.log(event.target.attributes.id);
+    // let item: ItemEdit = {
+    //   id: event.target.editId.value,
+    //   name: event.target.editName.value,
+    //   price: event.target.editPrice.value,
+    //   property: event.target.editProperty.value,
+    //   sku: event.target.editSku.value,
+    // };
+    // console.log("Item's this.item.name: " + item.name);
+    // this.itemsService.editItem(item);
+
+    this.toggleEdit();
+  }
 
   selectItem() {
     this.item.selected = true;

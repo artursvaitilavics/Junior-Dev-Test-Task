@@ -4,15 +4,30 @@
   (mouseleave)="hover = false"
   (click)="selectItem()"
 >
-  <div
-    [ngStyle]="{
-      backgroundColor: hover == true ? hoverColor : defaultColor
-    }"
-  >
+  <div *ngIf="dataVisible">
+    <div
+      [ngStyle]="{
+        backgroundColor: hover == true ? hoverColor : defaultColor
+      }"
+    >
       <h3>{{ item.name }}</h3>
       <p>id: {{ item.id }}</p>
       <p>price: {{ item.price }}</p>
       <p>property: {{ item.property }}</p>
       <p>sku: {{ item.sku }}</p>
     </div>
+  </div>
+  <div name="newData" *ngIf="!dataVisible">
+    <div name="editId" id={{item.id}}>
+      <input name="editName" name="name" value="{{item.name}}" />
+      <input name="editPrice" value="{{item.price}}" />
+      <input name="editProperty" value="{{item.property}}" />
+      <input name="editSku" value="{{item.sku}}" />
+    </div>
+    <button id='TARGET ID' *ngIf="!dataVisible" (click)="edit($event)">SAVE</button>
+    <button *ngIf="!dataVisible" (click)="toggleEdit()">Cancel</button>
+  </div>
+  <button *ngIf="dataVisible" (click)="toggleEdit()">EDIT</button>
+
+  
 </div>
