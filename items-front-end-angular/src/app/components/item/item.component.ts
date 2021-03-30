@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 import { ItemEntity } from './item-interface';
 import { ItemsService } from '../../services/items.service';
@@ -33,7 +34,18 @@ export class ItemComponent implements OnInit {
   defaultColor: string = '#00ffff';
   selectedColor: string = '#ff0000';
 
-  constructor(private itemsService: ItemsService) {}
+  constructor(
+    private itemsService: ItemsService,
+    private formBuilder: FormBuilder
+  ) {}
+
+  editForm = this.formBuilder.group({
+    id: 0,
+    name: '',
+    price: '',
+    property: '',
+    sku: '',
+  });
 
   ngOnInit(): void {}
 
@@ -41,18 +53,9 @@ export class ItemComponent implements OnInit {
     this.dataVisible = !this.dataVisible;
   }
 
-  edit(event: any) {
-    console.log(event.target.attributes.id);
-    // let item: ItemEdit = {
-    //   id: event.target.editId.value,
-    //   name: event.target.editName.value,
-    //   price: event.target.editPrice.value,
-    //   property: event.target.editProperty.value,
-    //   sku: event.target.editSku.value,
-    // };
-    // console.log("Item's this.item.name: " + item.name);
-    // this.itemsService.editItem(item);
-
+  edit(): void {
+    console.log(this.editForm.value);
+    this.itemsService.editItem(this.editForm.value);
     this.toggleEdit();
   }
 

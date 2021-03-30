@@ -34,13 +34,15 @@ export class ItemsService {
 
   editItem(item: ItemEdit) {
     console.log('EDIT ITEM FROM SERVICES...');
-    console.log(item);
+    console.log('THIS IS WHAT IS RECEIVED FROM COMPONENT TO SERVICES:', item);
     const headers = { 'content-type': 'application/json' };
     const body = JSON.stringify(item);
-    return this.http.put(this.URL + "item/" + item.id, body, {headers: headers}).pipe(
-      tap((_) => console.log(`update item id=${item.name}`)),
-      catchError(this.handleError<any>('updateItem'))
-    );
+    return this.http
+      .put(this.URL + 'item/' + item.id, body, { headers: headers })
+      .pipe(
+        tap((_) => console.log(`update item id=${item.name}`)),
+        catchError(this.handleError<any>('updateItem'))
+      );
   }
 
   deleteItems(id: number): Observable<any> {

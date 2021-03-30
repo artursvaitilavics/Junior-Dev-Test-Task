@@ -8,6 +8,7 @@ import com.ItemsBackEnd.mapping.ItemMapper;
 import com.ItemsBackEnd.model.Book;
 import com.ItemsBackEnd.model.Dvd;
 import com.ItemsBackEnd.model.Furniture;
+import com.ItemsBackEnd.model.Item;
 import com.ItemsBackEnd.service.BookService;
 import com.ItemsBackEnd.service.DvdService;
 import com.ItemsBackEnd.service.FurnitureService;
@@ -90,9 +91,10 @@ public class ItemController {
 
 
     //    Change bellow to PUT
-    @PostMapping("/item/id")
-    public ItemDto update(@PathParam("id") Long id, @RequestBody ItemDto itemDto) throws Exception {
-        return itemMapper.toDto(itemService.update(itemMapper.fromDto(itemDto), id));
+    @PutMapping("/item/{id}")
+    public ItemDto update(@PathVariable("id") Long id, @RequestBody ItemDto itemDto) throws Exception {
+        Item item = itemService.update(itemMapper.fromDto(itemDto), id);
+        return itemMapper.toDto(item);
     }
 
 }

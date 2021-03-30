@@ -10,24 +10,47 @@
         backgroundColor: hover == true ? hoverColor : defaultColor
       }"
     >
-      <h3>{{ item.name }}</h3>
+      <h3 name="itemName">{{ item.name }}</h3>
       <p>id: {{ item.id }}</p>
       <p>price: {{ item.price }}</p>
       <p>property: {{ item.property }}</p>
       <p>sku: {{ item.sku }}</p>
     </div>
   </div>
-  <div name="newData" *ngIf="!dataVisible">
-    <div name="editId" id={{item.id}}>
-      <input name="editName" name="name" value="{{item.name}}" />
-      <input name="editPrice" value="{{item.price}}" />
-      <input name="editProperty" value="{{item.property}}" />
-      <input name="editSku" value="{{item.sku}}" />
-    </div>
-    <button id='TARGET ID' *ngIf="!dataVisible" (click)="edit($event)">SAVE</button>
+  <form [formGroup]="editForm" (ngSubmit)="edit()" *ngIf="!dataVisible">
+    <label for="id">ID</label>
+    <input
+      id="id"
+      type="text"
+      formControlName="id"
+      [(ngModel)]="item.id"
+      readonly="true"
+    />
+    <label for="name"> Name </label>
+    <input
+      id="name"
+      type="text"
+      formControlName="name"
+      [(ngModel)]="item.name"
+    />
+    <label for="price"> Price </label>
+    <input
+      id="price"
+      type="text"
+      formControlName="price"
+      [(ngModel)]="item.price"
+    />
+    <label for="property"> Property </label>
+    <input
+      id="property"
+      type="text"
+      formControlName="property"
+      [(ngModel)]="item.property"
+    />
+    <label for="sku"> SKU </label>
+    <input id="sku" type="text" formControlName="sku" [(ngModel)]="item.sku" />
+    <button type="submit" type="submit">SAVE</button>
     <button *ngIf="!dataVisible" (click)="toggleEdit()">Cancel</button>
-  </div>
+  </form>
   <button *ngIf="dataVisible" (click)="toggleEdit()">EDIT</button>
-
-  
 </div>
