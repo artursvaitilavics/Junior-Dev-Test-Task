@@ -33,9 +33,12 @@ public class ItemService {
     }
 
     public Item update(Item item, Long id) throws Exception {
-        itemRepository.findById(id).orElseThrow(() -> new Exception("Item with " + id + " id do not exist..."));
-        item.setId(id);
-        return  itemRepository.save(item);
+        Item itemToUpdate = itemRepository.findById(id).orElseThrow(() -> new Exception("Item with " + id + " id do not exist..."));
+        if (item.getName() != null) itemToUpdate.setName(item.getName());
+        if (item.getPrice() != null) itemToUpdate.setPrice(item.getPrice());
+        if (item.getProperty() != null) itemToUpdate.setProperty(item.getProperty());
+        if (item.getSku() != null) itemToUpdate.setSku(item.getSku());
+        return itemRepository.save(itemToUpdate);
     }
 
     public void delete(Long id) throws Exception {
