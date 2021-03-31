@@ -55,7 +55,15 @@ export class ItemComponent implements OnInit {
 
   edit(): void {
     console.log(this.editForm.value);
-    this.itemsService.editItem(this.editForm.value);
+    this.itemsService.updateItem(this.editForm.value, this.item.id).subscribe(
+      (data) => {
+        console.log(data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    // this.itemsService.updateItem(this.item);
     this.toggleEdit();
   }
 

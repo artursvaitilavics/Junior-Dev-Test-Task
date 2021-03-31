@@ -92,6 +92,7 @@ public class ItemController {
 
     //    Change bellow to PUT
     @PutMapping("/item/{id}")
+    @CrossOrigin("*")
     public ItemDto update(@PathVariable("id") Long id, @RequestBody ItemDto itemDto) throws Exception {
         Item item = itemService.update(itemMapper.fromDto(itemDto), id);
         return itemMapper.toDto(item);

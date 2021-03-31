@@ -32,18 +32,24 @@ export class ItemsService {
     );
   }
 
-  editItem(item: ItemEdit) {
+  updateItem(item: ItemEdit, id: number): Observable<any> {
     console.log('EDIT ITEM FROM SERVICES...');
     console.log('THIS IS WHAT IS RECEIVED FROM COMPONENT TO SERVICES:', item);
     const headers = { 'content-type': 'application/json' };
-    const body = JSON.stringify(item);
+    let body = JSON.stringify(item);
+
     return this.http
-      .put(this.URL + 'item/' + item.id, body, { headers: headers })
+      .put(`${this.URL}/item/${id}`, body, { headers: headers })
       .pipe(
         tap((_) => console.log(`update item id=${item.name}`)),
         catchError(this.handleError<any>('updateItem'))
       );
   }
+
+  // updateItem(item: ItemEdit, id: number) {
+  //   console.log("SERVICES - UPDATE ITEM")
+  //   return this.http.put(`${this.URL}/items/${id}`, item);
+  // }
 
   deleteItems(id: number): Observable<any> {
     return this.http.delete(`${this.URL}items/${id}`);
